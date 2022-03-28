@@ -125,6 +125,8 @@ bool LinkedList::deleteNode(int id){
 
 bool LinkedList::getNode(int id, Data* returnBox){
     bool success = false;
+    returnBox->id = -1;
+    returnBox->data = "";
     if(head != NULL){
         Node *current;
         findId(id, &current);
@@ -132,9 +134,6 @@ bool LinkedList::getNode(int id, Data* returnBox){
             returnBox->data = current->data.data;
             returnBox->id = current->data.id;
             success = true;
-        }else{
-            returnBox->data = "";
-            returnBox->id = -1;
         }
     }
     return success;
