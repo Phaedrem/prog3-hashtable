@@ -38,9 +38,11 @@ PUBLIC
 
 bool HashTable::insertEntry(int id , string* data){
     bool inserted = false;
-    if((id > 0) && (*data != "")){
+    if((id > 0) && (*data != "" && id)){
         int position = hash(id);
-        if(hashtable[position]->addNode(id, data)){
+        Data testBox;
+        hashtable[position]->getNode(id, &testBox);
+        if(id != testBox.id && hashtable[position]->addNode(id, data)){
             count++;
             inserted = true;
         }
