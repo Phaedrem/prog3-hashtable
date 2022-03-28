@@ -49,19 +49,39 @@ int main() {
      * it works.
      */
     
+    //making temporary data holder for testing
+    Data tempData;
+
+    //Creating empty hash table
     HashTable table;
+
+    //Printing count and contents of new table
     cout << "The current count is " << table.getCount() << endl;
     table.printTable();
     cout << endl << endl;
 
+    //Putting all data into table
     for(int i = 0; i < testdatasize; i++){
         table.insertEntry(ids[i], &strs[i]);
     }
 
+    //Printing table after contents added
     cout << "The current count is " << table.getCount() << endl;
     table.printTable();
 
-    
+    //Grabbing a random id from test data
+    int testId = ids[rand() % testdatasize];
+
+    //setting tempData info to verify it changes after an attempt to getData
+    tempData.id = 9999;
+    tempData.data = "nothing";
+
+    //Grabbing data 
+    table.getData(testId, &tempData);
+
+    //Printing results
+    cout << endl <<"id " << tempData.id << " has " << tempData.data << " in it." << endl;
+
     // create your hash table object here
     
     // show it is empty by calling getCount and printTable
