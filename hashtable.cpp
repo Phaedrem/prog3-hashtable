@@ -49,7 +49,17 @@ bool HashTable::insertEntry(int id , string* data){
 }
 
 bool HashTable::getData(int id, Data* dataBox){
-    return true;
+    bool found = false;
+    if(id > 0){
+        int position = hash(id);
+        if(hashtable[position]->getNode(id, dataBox)){
+            found = true;
+        }
+    }else{
+        dataBox->id = -1;
+        dataBox->data = "";
+    }
+    return found;
 }
 
 bool HashTable::removeEntry(int id){
