@@ -13,8 +13,7 @@ CONSTRUCTORS / DESTRUCTORS
 HashTable::HashTable(){
     count = 0;
     for(int i = 0; i < HASHTABLESIZE; i++){
-        LinkedList list[i];
-        hashtable[i] = &list[i];
+        hashtable[i] = new LinkedList;
     }
 }
 
@@ -38,7 +37,15 @@ PUBLIC
 
 
 bool HashTable::insertEntry(int id , string* data){
-    return true;
+    bool inserted = false;
+    if((id > 0) && (*data != "")){
+        int position = hash(id);
+        if(hashtable[position]->addNode(id, data)){
+            count++;
+            inserted = true;
+        }
+    }
+    return inserted;
 }
 
 bool HashTable::getData(int id, Data* dataBox){
@@ -54,5 +61,9 @@ int HashTable::getCount(){
 }
 
 void HashTable::printTable(){
-
+    for(int i = 0; i < HASHTABLESIZE; i++){
+        cout << "Entry " << i << ": "; 
+        hashtable[i]->printList();
+        cout << endl;
+    }
 }
