@@ -43,11 +43,11 @@ int main() {
     }
     cout << endl;
 
-    /*
-     * Now you have two parallel arrays with ids and strings for test data.
-     * START HERE and create your hash table and use the test data to show
-     * it works.
-     */
+    /***********************************************************************
+     * Now you have two parallel arrays with ids and strings for test data.*
+     * START HERE and create your hash table and use the test data to show *
+     * it works.                                                           *
+     **********************************************************************/
     
     //making temporary data holder for testing
     Data tempData;
@@ -80,20 +80,58 @@ int main() {
     table.getData(testId, &tempData);
 
     //Printing results
-    cout << endl <<"id " << tempData.id << " has " << tempData.data << " in it." << endl;
+    cout << endl <<"id " << tempData.id << " has " << tempData.data << " in it." << endl << endl;
 
-    // create your hash table object here
-    
-    // show it is empty by calling getCount and printTable
-    
-    // try and put ALL the test data into the table and show what happens
+    //Printing count and whole table to show no changes
+    cout << "The current count is " << table.getCount() << endl;
+    table.printTable();
 
-    // continue using and testing your table, add and remove data,
-    // do whatever it takes to full test your object and prove it
-    // is robust and can handle all use cases.
+    //Grabbing another random id from test data
+    testId = ids[rand() % testdatasize];
 
+    //Removing entry    
+    cout << endl << "Removing entry " << testId << endl;
     
+    if(table.removeEntry(testId)){
+        cout << "Removed" << endl;
+    }else{
+        cout << "failed to removed" << endl;
+    }
+
+    cout << endl << "attempting to use getData to find removed id " << testId << endl;
+    table.getData(testId, &tempData);
+    cout << endl <<"id " << tempData.id << " has " << tempData.data << " in it." << endl << endl;
+
+    //Printing count and whole table to show changes
+    cout << "The current count is " << table.getCount() << endl;
+    table.printTable();
+
+    //Trying to remove an id that isn't in the list
+    cout << endl << "Removing entry 8888" << endl;
     
+    if(table.removeEntry(8888)){
+        cout << "Removed" << endl;
+    }else{
+        cout << "failed to removed" << endl;
+    }
+
+    //Printing count and whole table to show changes
+    cout << endl << "The current count is " << table.getCount() << endl;
+    table.printTable();
+
+    //Trying to remove an id that is out of range
+    cout << endl << "Removing entry -1" << endl;
+    
+    if(table.removeEntry(-1)){
+        cout << "Removed" << endl;
+    }else{
+        cout << "failed to removed" << endl;
+    }
+
+    //Printing count and whole table to show changes
+    cout << endl << "The current count is " << table.getCount() << endl;
+    table.printTable();
+
     
     
     return 0;
