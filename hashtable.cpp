@@ -13,15 +13,14 @@ CONSTRUCTORS / DESTRUCTORS
 HashTable::HashTable(){
     count = 0;
     for(int i = 0; i < HASHTABLESIZE; i++){
-        hashtable[i] = nullptr;
+        LinkedList list[i];
+        hashtable[i] = &list[i];
     }
 }
 
 HashTable::~HashTable(){
     for(int i = 0; i < HASHTABLESIZE; i++){
-        if(hashtable[i]){
-            delete hashtable[i];
-        }
+        delete hashtable[i];
     }
 }
 
