@@ -63,7 +63,15 @@ bool HashTable::getData(int id, Data* dataBox){
 }
 
 bool HashTable::removeEntry(int id){
-    return true;
+    bool removed = false;
+    if(id > 0){
+        int position = hash(id);
+        if(hashtable[position]->deleteNode(id)){
+            count--;
+            removed = true;
+        }
+    }
+    return removed;
 }
 
 int HashTable::getCount(){
