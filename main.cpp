@@ -49,6 +49,19 @@ int main() {
      * it works.
      */
     
+    HashTable table;
+    cout << "The current count is " << table.getCount() << endl;
+    table.printTable();
+    cout << endl << endl;
+
+    for(int i = 0; i < testdatasize; i++){
+        table.insertEntry(ids[i], &strs[i]);
+    }
+
+    cout << "The current count is " << table.getCount() << endl;
+    table.printTable();
+
+    
     // create your hash table object here
     
     // show it is empty by calling getCount and printTable

@@ -18,6 +18,8 @@ Purpose: Creating Hash tables of linked lists
 #define BASE 5
 #define OFFSET 20
 
+#include "hashtable.h"
+
 using std::cout;
 using std::endl;
 using std::string;
