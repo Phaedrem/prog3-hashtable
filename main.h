@@ -1,6 +1,9 @@
-/* 
- * your comment header here
- */
+/*********************
+Name: Darren Bowers
+Coding 06
+Purpose: Creating Hash tables of linked lists
+**********************/
+
 
 #ifndef MAIN_H
 #define MAIN_H

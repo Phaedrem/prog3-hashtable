@@ -1,6 +1,8 @@
-/* 
- * your comment header here
- */
+/*********************
+Name: Darren Bowers
+Coding 06
+Purpose: Creating Hash tables of linked lists
+**********************/
 
 #include "main.h"
 
