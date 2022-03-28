@@ -38,15 +38,15 @@ PUBLIC
 *********************************/
 
 
-bool HashTable::insertEntry(int, string*){
+bool HashTable::insertEntry(int id , string* data){
     return true;
 }
 
-bool HashTable::getData(int, Data*){
+bool HashTable::getData(int id, Data* dataBox){
     return true;
 }
 
-bool HashTable::removeEntry(int){
+bool HashTable::removeEntry(int id){
     return true;
 }
 
