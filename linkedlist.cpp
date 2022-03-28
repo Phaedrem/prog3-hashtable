@@ -145,21 +145,23 @@ void LinkedList::printList(bool direction){
     int currentCount = PRINTSTART;
     if(head != NULL && !direction){ //forward
         while(current){
-            cout << currentCount << ": " <<current->data.id << " : " << current->data.data << endl;
+            cout << current->data.id << ": " << current->data.data << " -> ";
             currentCount++;
             current = current->next;
         }
+        cout << "\b\b \b\b\b  ";
     }else if(head != NULL){ //backward
         while(current->next){
             current = current->next;
         }
         while(current){
-           cout << currentCount << ": " <<current->data.id << " : " << current->data.data << endl;
+            cout << current->data.id << ": " << current->data.data << " -> ";
             currentCount++;
             current = current->prev;
         }
+        cout << "\b\b \b\b\b  ";
     }else{
-        cout << "List is empty" << endl;
+        cout << "EMPTY";
     }
 }
 
