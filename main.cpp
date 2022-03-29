@@ -158,6 +158,52 @@ int main() {
     
     cout << endl << "The current count is " << table.getCount() << endl;
     table.printTable();
+    cout << endl << endl;
+
+    cout << endl << "======================================================================" << endl;
+    cout << "Random Test" << endl;
+    cout << "======================================================================" << endl << endl;
+
+
+    int choice = rand() % CHOICES + 1;
+    for(int i = 0; i < HASHTABLESIZE*RANDOM_MULTIPLIER; i++){
+        switch (choice){
+            case 1:
+            case 2:
+                testId = rand() % testdatasize; 
+                if(table.insertEntry(ids[testId], &strs[testId])){
+                    cout << "Succesfully inserted " << ids[testId] << ": " << strs[testId] << endl;
+                }else{
+                    cout << "Failed to insert " << testId <<endl;
+                }
+                break;
+            case 3:
+            case 4:
+                testId = ids[rand() % testdatasize];
+                if(table.removeEntry(testId)){
+                    cout << "Removed " << testId << endl;
+                }else{
+                    cout << "Failed to remove " << testId << endl;
+                }
+                break;
+            case 5:
+                testId = ids[rand() % testdatasize];
+                if(table.getData(testId, &tempData)){
+                    cout << "getting id " << testId << ": " << tempData.data << endl;
+                }else{
+                    cout << "Failed to get id " << testId <<endl;
+                }
+                break;
+            case 6:
+                cout << "Current count is " << table.getCount() << endl;
+                break;
+        }
+        choice = rand() % CHOICES +1;
+    }
+
+    cout << endl << "The current count is " << table.getCount() << endl;
+    table.printTable();
+    cout << endl << endl;
 
     
     return 0;

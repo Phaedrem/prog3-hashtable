@@ -17,6 +17,9 @@ Purpose: Creating Hash tables of linked lists
 #define MAXID 100
 #define BASE 5
 #define OFFSET 20
+#define RANDOM_MULTIPLIER 10
+#define CHOICES 6
+#define HASHTABLESIZE 15
 
 #include "hashtable.h"
 
