@@ -49,8 +49,15 @@ int main() {
      * it works.                                                           *
      **********************************************************************/
     
-    //temporary data holder for testing and creating empty table
+    //temporary data holder and tempID for testing and creating empty table 
     Data tempData;
+    int testId;
+    //setting tempData info to verify it changes after an attempt to getData
+    tempData.id = 9999;
+    tempData.data = "nothing";
+    
+
+    cout << "Creating Hashtable" << endl << endl;
     HashTable table;
 
     
@@ -61,33 +68,35 @@ int main() {
 
     cout << "Attempting to put all test data into table" << endl << endl;
     for(int i = 0; i < testdatasize; i++){
-        table.insertEntry(ids[i], &strs[i]);
+        if(table.insertEntry(ids[i], &strs[i])){
+            cout << "Inserted " << ids[i] << ": " << strs[i] << " successfully" << endl;
+        }else{
+            cout << "Failed to insert " << ids[i] << ": " << strs[i] << endl;
+        }
     }
 
-    cout << "Printing current count and entire table " << endl << endl;
+    cout << endl << "Printing current count and entire table " << endl << endl;
     cout << "Current count is " << table.getCount() << endl;
     table.printTable();
 
-    cout << endl << "Grabbing random testdata id" << endl;
-    int testId = ids[rand() % testdatasize];
-
-    //setting tempData info to verify it changes after an attempt to getData
-    tempData.id = 9999;
-    tempData.data = "nothing";
-
-    cout << "Attempting to grab data for id " << testId << endl;
-    if(table.getData(testId, &tempData)){
-        cout << "getData succesful" << endl;
-        cout << endl <<"id " << tempData.id << " has " << tempData.data << " in it." << endl << endl;
-    }else{
-        cout << "getData failed, tempData now has an id of " << tempData.id << " and a data of '" << tempData.data << "'" << endl;
+    cout << endl << "Grabbing a few random testdata ids" << endl << endl;
+    for(int i = 0; i < 5; i++){
+        int testId = ids[rand() % testdatasize];
+        cout << "Attempting to grab data for id " << testId << endl;
+        if(table.getData(testId, &tempData)){
+            cout << "getData succesful" << endl;
+            cout <<"id " << tempData.id << " has " << tempData.data << " in it." << endl << endl;
+        }else{
+            cout << "getData failed" << endl;
+            cout << "tempData now has an id of " << tempData.id << " and a data of '" << tempData.data << "'" << endl << endl;
+        }
     }
 
     //Printing count and whole table to show no changes
     cout << "The current count is " << table.getCount() << endl;
     table.printTable();
 
-    cout << endl << "Grabbing another random id from test data" << endl;
+    cout << endl << "Attemping to remove a few random ids" << endl;
     testId = ids[rand() % testdatasize];
 
     //Removing entry    
