@@ -97,23 +97,23 @@ int main() {
     table.printTable();
 
     cout << endl << "Attemping to remove a few random ids" << endl;
-    testId = ids[rand() % testdatasize];
-
-    //Removing entry    
-    cout << endl << "Removing entry " << testId << endl;
-    
-    if(table.removeEntry(testId)){
-        cout << "Removed" << endl;
-    }else{
-        cout << "failed to removed" << endl;
+    for(int i = 0; i < 5; i++){
+        testId = ids[rand() % testdatasize];
+        cout << endl << "Attemping to remove entry " << testId << endl;
+        if(table.removeEntry(testId)){
+            cout << "Removed" << endl;
+        }else{
+            cout << "failed to removed" << endl;
+        }
     }
-
+    
     cout << endl << "attempting to use getData to find removed id " << testId << endl;
     if(table.getData(testId, &tempData)){
         cout << "getData succesful" << endl;
         cout << endl <<"id " << tempData.id << " has " << tempData.data << " in it." << endl << endl;
     }else{
-        cout << "getData failed, tempData now has an id of " << tempData.id << " and a data of '" << tempData.data << "'" << endl;
+        cout << "getData failed" << endl;
+        cout << "tempData now has an id of " << tempData.id << " and a data of '" << tempData.data << "'" << endl << endl;
     }
 
     //Printing count and whole table to show changes
