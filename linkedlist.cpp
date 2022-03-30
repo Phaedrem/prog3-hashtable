@@ -148,7 +148,7 @@ void LinkedList::printList(bool direction){
             currentCount++;
             current = current->next;
         }
-        cout << "\b\b \b\b\b  ";
+        cout << "\b\b\b  ";
     }else if(head != NULL){ //backward
         while(current->next){
             current = current->next;
@@ -158,7 +158,7 @@ void LinkedList::printList(bool direction){
             currentCount++;
             current = current->prev;
         }
-        cout << "\b\b \b\b\b  ";
+        cout << "\b\b\b  ";
     }else{
         cout << "EMPTY";
     }
