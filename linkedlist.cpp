@@ -141,11 +141,9 @@ bool LinkedList::getNode(int id, Data* returnBox){
 
 void LinkedList::printList(bool direction){
     Node *current = head;
-    int currentCount = PRINTSTART;
     if(head != NULL && !direction){ //forward
         while(current){
             cout << current->data.id << ": " << current->data.data << " -> ";
-            currentCount++;
             current = current->next;
         }
         cout << "\b\b\b  ";
@@ -155,7 +153,6 @@ void LinkedList::printList(bool direction){
         }
         while(current){
             cout << current->data.id << ": " << current->data.data << " -> ";
-            currentCount++;
             current = current->prev;
         }
         cout << "\b\b\b  ";
